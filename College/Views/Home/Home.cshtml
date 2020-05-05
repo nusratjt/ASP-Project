@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+
+<h3>Welcome to the College Application</h3>
+<br />
+<h4>In this website you can view the course informations.</h4>
+ @if (!User.Identity.IsAuthenticated) { 
+        <h4>
+            You can <a asp-controller="Account" asp-action="register">Register</a> or
+            <a asp-Controller="Account" asp-action="Login">login</a> to add or edit the course information.
+        </h4>
+ }
+    
+<h4>You have ability to enroll students the course.</h4>
+
+<h6>Only admin user has ability to delete information.</h6>

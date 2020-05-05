@@ -1,0 +1,28 @@
+﻿@model LoginModel
+@{
+    ViewBag.Title = "Log In";
+    Layout = "_Layout";
+}
+<h3>@ViewBag.Title</h3>
+<form asp-action="Login" asp-controller="Account" method="post">
+    <input type="hidden" asp-for="ReturnUrl" />
+    <table>
+        <tr>
+            <td id="medium"><label asp-for="Name">User Name:</label></td>
+            <td><input type="text" asp-for="Name" /></td>
+            <td id="longer"><span id="error" asp-validation-for="Name"></span></td>
+        </tr>
+        <tr>
+            <td id="medium"><label asp-for="Password">Password:</label></td>
+            <td><input asp-for="Password" /></td>
+            <td id="longer"><span id="error" asp-validation-for="Password"></span></td>
+        </tr>
+        <tr><td id="medium"><hr /></td><td><hr /></td><td id="longer"><hr /></td></tr>
+        <tr>
+            <td id="medium"><a asp-controller="Account" asp-action="Register" id="slist">Register</a></td>
+            <td><button type="submit">Log In</button></td>
+            <td id="longer"><div id="error" asp-validation-summary="ModelOnly"></div></td>
+        </tr>
+        </table>
+        
+</form>

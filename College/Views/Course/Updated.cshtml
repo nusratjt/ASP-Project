@@ -1,0 +1,10 @@
+﻿@model Course
+
+@{
+    Layout = "_Layout";
+}
+
+<p>
+    <h3>Thank you, <b>"@Model.CourseName"</b> successfully updated!</h3>
+</p>
+<a asp-controller="Course" asp-action="DisplayPage">Back to the list</a>

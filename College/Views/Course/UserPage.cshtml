@@ -1,0 +1,14 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewBag.Title = "User Page";
+}
+<form asp-controller="Course" asp-action="AddStudent" method="post">
+    <div asp-validation-summary="All" id="alert"></div>
+    @Html.Partial("_StudentAddPartial")
+    <hr />
+    <button type="submit">Enroll Student</button>
+    <button asp-controller="Course" asp-action="DisplayPage">Cancel</button>
+</form>

@@ -1,0 +1,11 @@
+﻿@model Student
+@{
+    Layout = "_Layout";
+}
+
+    <p>
+        <h3>Thank you, <b>"@Model.FName @Model.LName"</b> added to <b>@ViewBag.CourseName</b>!</h3>
+    </p>
+    <a asp-controller="Course" asp-action="UserPage">Add more students</a><span> or go to </span>
+    <a asp-controller="Course"  asp-action="DisplayPage">Course List</a>
+    

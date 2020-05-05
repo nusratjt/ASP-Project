@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="~/css/Style.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div id="title">
+                <h1>MTVC College</h1>
+                <img src="~/images/MTVC-Logo.png" />
+            </div>
+            <div id="menu-div">
+                <ul id="menu">
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-controller="Course" asp-action="DisplayPage">Display Page</a></li>
+                    <li><a asp-controller="Course" asp-action="DataPage">Data Page</a></li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li><a asp-controller="Course" asp-action="InsertPage">Insert Page</a></li>
+                            <li><a asp-Controller="Course" asp-action="UserPage">User Page</a></li>
+                            <li><a asp-Controller="Account" asp-action="Logout">Logout</a></li>
+                        }
+                        else if(User.IsInRole("User"))
+                        {
+                            <li><a asp-Controller="Course" asp-action="UserPage">User Page</a></li>
+                            <li><a asp-Controller="Account" asp-action="Logout">Logout</a></li>
+                        }
+                    }
+                    else
+                    {
+                        <li><a asp-Controller="Account" asp-action="Login">Login</a></li>
+                        <li><a asp-Controller="Account" asp-action="Register">Register</a></li>
+                    }
+
+                </ul>
+            </div>
+        </header>
+        <div id="content">
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+        <footer id="footer">
+            <h6>&copy;&nbsp;Copyright Mahdi Moradi - Comp228 - Web Application - Assignment 04 - Fall 2018</h6>
+        </footer>
+    </div>
+</body>
+</html>

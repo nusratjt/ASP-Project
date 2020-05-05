@@ -1,0 +1,32 @@
+﻿@model RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "_Layout";
+}
+
+<h3>@ViewBag.Title</h3>
+<form asp-action="Register" asp-controller="Account" method="post">
+    <table>
+        <tr>
+            <td id="medium"><label asp-for="Username">User Name:</label></td>
+            <td><input type="text" asp-for="Username" /></td>
+            <td id="longer"><span id="error" asp-validation-for="Username"></span></td>
+        </tr>
+        <tr>
+            <td id="medium"><label asp-for="Password">Password:</label></td>
+            <td><input asp-for="Password" /></td>
+            <td id="longer"><span id="error" asp-validation-for="Password"></span></td>
+        </tr>
+        <tr>
+            <td id="medium"><label asp-for="ConfirmPassword">Confirm Password:</label></td>
+            <td><input asp-for="ConfirmPassword" /></td>
+            <td id="longer"><span id="error" asp-validation-for="ConfirmPassword"></span></td>
+        </tr>
+        <tr><td id="medium"><hr /></td><td><hr /></td><td id="longer"><hr /></td></tr>
+        <tr>
+            <td id="medium"></td>
+            <td><button type="submit">Register</button></td>
+            <td id="longer"><div id="error" asp-validation-summary="ModelOnly"></div></td>
+        </tr>
+    </table>
+</form>

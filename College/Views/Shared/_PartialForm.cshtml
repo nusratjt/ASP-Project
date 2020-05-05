@@ -1,0 +1,32 @@
+﻿@model Course
+@{
+    Layout = null;
+}
+
+<h3>Please enter the data for new course:</h3>
+    <table>
+        <tr>
+            <td>
+                <label asp-for="CourseCode">Course Code:</label>
+            </td>
+            <td>
+                <input type="text" asp-for="CourseCode" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="CourseName">Course Name:</label>
+            </td>
+            <td>
+                <input type="text" asp-for="CourseName" style="width:300px;" />
+            </td>
+        </tr>
+        <tr>
+            <td  style="width:200px;">
+                <label asp-for="CourseDesc">Course Description:</label>
+            </td>
+            <td>
+                <input type="text" asp-for="CourseDesc" style="width:450px;"/>
+            </td>
+        </tr>
+    </table>

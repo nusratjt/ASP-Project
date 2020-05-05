@@ -1,0 +1,40 @@
+﻿@model CourseListViewModel
+
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewBag.Title = "Display Page";
+}<div id="list">
+    <h3>The list of courses:</h3>
+    <table>
+        <tr>
+            <th style="width:110px;">
+                Course Code
+            </th>
+            <th id="long">
+                Course Name
+            </th>
+            <th id="longer">
+                Course Description
+            </th>
+        </tr>
+    </table>
+    <hr />
+
+    @foreach (var c in Model.Courses)
+    {
+        @Html.Partial("_CourseLink", c)
+        <p style="height:5px; padding:0; margin:0;"></p>
+    }
+    <div class="paging" page-model="@Model.PagingInfo" page-action="DisplayPage" page-classes-enabled="true">
+    </div>
+</div>
+@if (User.IsInRole("Admin"))
+{
+    <hr />
+    <hr />
+    <form>
+        <button asp-controller="Course" asp-action="InsertPage">Add Course</button>
+    </form>
+}

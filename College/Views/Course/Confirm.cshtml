@@ -1,0 +1,12 @@
+﻿@model College.Models.Course
+
+@{
+    Layout = "_Layout";
+}
+
+    <p>
+        <h3>Thank you, <b>"@Model.CourseName"</b> added!</h3>
+    </p>
+    <a asp-controller="Course" asp-action="InsertPage">Add more course</a><span> or check the </span>
+    <a asp-controller="Course"  asp-action="DisplayPage">Course list</a>
+    

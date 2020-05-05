@@ -1,0 +1,30 @@
+﻿@model Student
+@{
+    Layout = null;
+}
+<h3>Enter data for new student and add to the course</h3>
+<input asp-for="StudentId" type="hidden" value="0" />
+<table>
+    <tr>
+        <td><label asp-for="FName">First Name:</label></td>
+        <td><input asp-for="FName" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label asp-for="LName">Last Name:</label></td>
+        <td><input asp-for="LName" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label asp-for="Address">Address:</label></td>
+        <td><input asp-for="Address" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label asp-for="City">City:</label></td>
+        <td><input asp-for="City" type="text" /></td>
+    </tr>
+    <tr>
+        <td><label asp-for="CourseId">Course:</label></td>
+        <td>
+            <select asp-for="CourseId" asp-items="@(new SelectList(@ViewBag.ListOfItems, "CourseId","CourseName", ViewBag.CourseId))" style="height: 30px;width: 350px;"></select>
+        </td>
+    </tr>
+</table>

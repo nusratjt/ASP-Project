@@ -1,0 +1,25 @@
+﻿@model Course
+@{
+    Layout = null;
+}
+
+   
+<form asp-controller="Course" asp-action="DataPage" method="post">
+    <input type="hidden" asp-for="CourseCode" />
+    <input type="hidden" asp-for="CourseId" />
+    <input type="hidden" asp-for="CourseName" />
+    <input type="hidden" asp-for="CourseDesc" />
+    <input type="hidden" asp-for="Students" />
+    <button type="submit">
+        <table id="list">
+            <tbody>
+                <tr>
+                    <td id="medium">@Model.CourseCode</td>
+                    <td id="long">| @Model.CourseName</td>
+                    <td id="longer">| @Model.CourseDesc</td>
+                </tr>
+            </tbody>
+        </table>
+    </button>
+</form>
+        

@@ -1,0 +1,81 @@
+﻿@model Course
+
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewBag.Title = "Data Page";
+}
+
+@if (User.IsInRole("Admin"))
+{
+    <form asp-controller="Course" asp-action="Updated" method="post">
+        <div asp-validation-summary="All"></div>
+        <input asp-for="CourseId" type="hidden" />
+        <h3>You can update the data for the course:</h3>
+        <table>
+            <tr>
+                <td><label asp-for="CourseCode">Course Code:</label></td>
+                <td><input type="text" asp-for="CourseCode" /></td>
+            </tr>
+            <tr>
+                <td><label asp-for="CourseName">Course Name:</label></td>
+                <td><input type="text" asp-for="CourseName" style="width:300px;" /></td>
+            </tr>
+            <tr>
+                <td style="width:200px;"><label asp-for="CourseDesc">Course Description:</label></td>
+                <td><input type="text" asp-for="CourseDesc" style="width:450px;" /></td>
+            </tr>
+            <tr>
+                <td><label asp-for="Students">Students Enrolled:</label></td>
+                <td>
+                    <select asp-for="Students" asp-items="@(new SelectList(@Model.Students, "StudentId","FName"))" id="stulist"></select>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        <button type="submit">Update</button>
+        <button asp-controller="Course" asp-action="DisplayPage">Cancel</button>&nbsp;&nbsp;
+        <a asp-controller="Course" asp-action="UserPage" asp-route-id="@Model.CourseId" id="slist">Enroll Students</a>
+    </form>
+    <br />
+    <form asp-controller="Course" asp-action="Deleted" method="post">
+        <input asp-for="CourseId" type="hidden" />
+        <input asp-for="CourseName" type="hidden" />
+        <input asp-for="CourseCode" type="hidden" />
+        <input asp-for="CourseDesc" type="hidden" />
+        <input asp-for="Students" type="hidden" />
+        <button style="background-color:indianred;" type="submit">Delete </button>
+    </form>
+   
+}
+else if(User.IsInRole("User") | !User.Identity.IsAuthenticated)
+{
+   
+
+    <h3>Please login to update the data for the course:</h3>
+    <table>
+        <tr>
+            <td><label asp-for="CourseCode">Course Code:</label></td>
+            <td><input type="text" asp-for="CourseCode" readonly /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="CourseName">Course Name:</label></td>
+            <td><input type="text" asp-for="CourseName" style="width:300px;" readonly /></td>
+        </tr>
+        <tr>
+            <td style="width:200px;"><label asp-for="CourseDesc">Course Description:</label></td>
+            <td><input type="text" asp-for="CourseDesc" style="width:450px;" readonly /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="Students">Students Enrolled:</label></td>
+            <td>
+                <select asp-for="Students" asp-items="@(new SelectList(@Model.Students, "StudentId","FName"))" id="stulist"></select>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <a id="slist" asp-controller="Course" asp-action="DisplayPage">Cancel</a>
+    
+}
+
